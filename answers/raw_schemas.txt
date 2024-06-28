@@ -1,0 +1,75 @@
+
+
+-- Show all table names
+SHOW TABLES;
+┌──────────────────────┐
+│         name         │
+│       varchar        │
+├──────────────────────┤
+│ bike_data            │
+│ central_park_weather │
+│ fhv_bases            │
+└──────────────────────┘
+
+-- Describe the schema of each table
+DESCRIBE bike_data;
+┌─────────────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│       column_name       │ column_type │  null   │   key   │ default │  extra  │
+│         varchar         │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├─────────────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ tripduration            │ INTEGER     │ YES     │         │         │         │
+│ starttime               │ TIMESTAMP   │ YES     │         │         │         │
+│ stoptime                │ TIMESTAMP   │ YES     │         │         │         │
+│ start_station_id        │ INTEGER     │ YES     │         │         │         │
+│ start_station_name      │ VARCHAR     │ YES     │         │         │         │
+│ start_station_latitude  │ DOUBLE      │ YES     │         │         │         │
+│ start_station_longitude │ DOUBLE      │ YES     │         │         │         │
+│ end_station_id          │ INTEGER     │ YES     │         │         │         │
+│ end_station_name        │ VARCHAR     │ YES     │         │         │         │
+│ end_station_latitude    │ DOUBLE      │ YES     │         │         │         │
+│ end_station_longitude   │ DOUBLE      │ YES     │         │         │         │
+│ bikeid                  │ INTEGER     │ YES     │         │         │         │
+│ usertype                │ VARCHAR     │ YES     │         │         │         │
+│ birth_year              │ INTEGER     │ YES     │         │         │         │
+│ gender                  │ INTEGER     │ YES     │         │         │         │
+│ ride_id                 │ VARCHAR     │ YES     │         │         │         │
+│ rideable_type           │ VARCHAR     │ YES     │         │         │         │
+│ started_at              │ TIMESTAMP   │ YES     │         │         │         │
+│ ended_at                │ TIMESTAMP   │ YES     │         │         │         │
+│ start_station_name_2    │ VARCHAR     │ YES     │         │         │         │
+│ start_station_id_2      │ VARCHAR     │ YES     │         │         │         │
+│ end_station_name_2      │ VARCHAR     │ YES     │         │         │         │
+│ end_station_id_2        │ VARCHAR     │ YES     │         │         │         │
+│ start_lat               │ DOUBLE      │ YES     │         │         │         │
+│ start_lng               │ DOUBLE      │ YES     │         │         │         │
+│ end_lat                 │ DOUBLE      │ YES     │         │         │         │
+│ end_lng                 │ DOUBLE      │ YES     │         │         │         │
+│ member_casual           │ VARCHAR     │ YES     │         │         │         │
+├─────────────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┤
+│ 28 rows                                                             6 columns │
+└───────────────────────────────────────────────────────────────────────────────┘
+DESCRIBE central_park_weather;
+┌─────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│ column_name │ column_type │  null   │   key   │ default │  extra  │
+│   varchar   │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├─────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ station     │ VARCHAR     │ YES     │         │         │         │
+│ name        │ VARCHAR     │ YES     │         │         │         │
+│ date        │ VARCHAR     │ YES     │         │         │         │
+│ awnd        │ FLOAT       │ YES     │         │         │         │
+│ prcp        │ FLOAT       │ YES     │         │         │         │
+│ snow        │ FLOAT       │ YES     │         │         │         │
+│ snwd        │ FLOAT       │ YES     │         │         │         │
+│ tmax        │ INTEGER     │ YES     │         │         │         │
+│ tmin        │ INTEGER     │ YES     │         │         │         │
+└─────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┘
+DESCRIBE fhv_bases;
+┌──────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│ column_name  │ column_type │  null   │   key   │ default │  extra  │
+│   varchar    │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├──────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ base_number  │ VARCHAR     │ YES     │         │         │         │
+│ base_name    │ VARCHAR     │ YES     │         │         │         │
+│ dba          │ VARCHAR     │ YES     │         │         │         │
+│ dba_category │ VARCHAR     │ YES     │         │         │         │
+└──────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┘
