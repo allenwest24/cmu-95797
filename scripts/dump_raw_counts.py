@@ -1,25 +1,24 @@
-# scripts/dump_raw_counts.py
-
+#!/usr/bin/env python
 import duckdb
+import sys
 
-def main():
-    # Connect to the database
-    con = duckdb.connect('main.db')
+raw_tables = [
+    "central_park_weather",
+    "fhv_bases",
+    "fhv_tripdata",
+    "fhvhv_tripdata",
+    "green_tripdata",
+    "yellow_tripdata",
+    "bike_data",
+]
 
-    # List of tables to get counts for
-    tables = [
-        'bike_data',
-        'central_park_weather',
-        'fhv_bases'
-    ]
 
-    # Write the counts to a file
-    with open('answers/raw_counts.txt', 'w') as f:
-        # Get the count for each table
-        for table in tables:
-            count = con.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0]
-            f.write(f'{table}: {count}\n')
-            print(f'{table}: {count}')
+def main(conn):
+    for t in sorted(raw_tables):
+        rows = conn.sql(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+        print(t, rows)
+
 
 if __name__ == "__main__":
-    main()
+    with duckdb.connect(sys.argv[1]) as conn:
+        main(conn)
