@@ -91,12 +91,6 @@ with cleaned_yellow_tripdata as (
         filename
 
     from {{ source('main', 'yellow_tripdata') }}
-
-    -- Filtering out rows with essential null values
-    where VendorID is not null
-      and tpep_pickup_datetime is not null
-      and tpep_dropoff_datetime is not null
-      and try_cast(tpep_dropoff_datetime as timestamp) >= try_cast(tpep_pickup_datetime as timestamp)
 )
 
 -- Excluding airport fee

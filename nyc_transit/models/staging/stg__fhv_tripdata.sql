@@ -37,13 +37,6 @@ with cleaned_fhv_tripdata as (
         -- Casting filename to varchar
         try_cast(filename as varchar) as filename
     from {{ source('main', 'fhv_tripdata') }}
-
-    -- Filtering out rows where dispatching_base_num is null
-    where dispatching_base_num is not null
-        and pickup_datetime is not null
-        and dropoff_datetime is not null
-        and PUlocationID is not null
-        and DOlocationID is not null
 )
 
 -- Kept all columns, even the shared_ride_flag which is mostly null

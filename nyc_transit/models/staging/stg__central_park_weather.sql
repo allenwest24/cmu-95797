@@ -45,10 +45,6 @@ with cleaned_central_park_weather as (
         -- Select filename as is
         filename
     from {{ source('main', 'central_park_weather') }}
-    
-    -- Filter out rows where station or date is null
-    where station is not null
-      and date is not null
 )
 
 -- Kept all columns

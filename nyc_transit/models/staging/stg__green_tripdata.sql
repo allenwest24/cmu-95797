@@ -93,13 +93,6 @@ with cleaned_green_tripdata as (
         filename
 
     from {{ source('main', 'green_tripdata') }}
-
-    -- Filtering out rows with essential null values
-    where VendorID is not null
-      and lpep_pickup_datetime is not null
-      and lpep_dropoff_datetime is not null
-      and try_cast(lpep_dropoff_datetime as timestamp) >= try_cast(lpep_pickup_datetime as timestamp)
-
 )
 
 -- Excluded ehail fee

@@ -59,10 +59,6 @@ with cleaned_fhv_bases as (
         -- Casting filename to varchar
         try_cast(filename as varchar) as filename
     from {{ source('main', 'fhv_bases') }}
-    
-    -- Filter out rows where base_number is null
-    where base_number is not null
-        and base_name is not null
 )
 
 -- Kept all columns

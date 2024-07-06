@@ -57,12 +57,6 @@ with cleaned_bike_data as (
         filename
 
     from {{ source('main', 'bike_data') }}
-
-    -- Filtering out rows with essential null values
-    where tripduration is not null
-      and starttime is not null
-      and stoptime is not null
-      and bikeid is not null
 )
 
 -- excluded all null columns from list

@@ -1,3 +1,0 @@
-- Are we expected to use refs? And if so what to what and hhwo would we transform further 
-- I sort of made my sources.yml more like a schema, is this wrong, are my tests too specfic?
-- Email

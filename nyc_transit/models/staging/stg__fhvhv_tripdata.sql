@@ -109,12 +109,6 @@ with cleaned_fhvhv_tripdata as (
         -- Casting filename to varchar
         try_cast(filename as varchar) as filename
     from {{ source('main', 'fhvhv_tripdata') }}
-    
-    -- Filter out rows where critical columns are null
-    where hvfhs_license_num is not null
-        and dispatching_base_num is not null
-        and pickup_datetime is not null
-        and pickup_datetime <= dropoff_datetime
 )
 
 -- Excluded airport fee, as it was all null
