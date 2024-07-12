@@ -1,5 +1,3 @@
--- models/staging/stg__fhv_tripdata.sql
-
 {{ config(
     materialized='view',
     alias='for_hire_vehicle_trip_data'
@@ -15,20 +13,20 @@ with cleaned_fhv_tripdata as (
         try_cast(pickup_datetime as timestamp) as pickup_datetime,
         try_cast(dropoff_datetime as timestamp) as dropoff_datetime,
 
-        -- Casting PUlocationID and DOlocationID to integer instead of double and renaming
-        case when try_cast(PUlocationID as integer) > 0
+        -- Casting PUlocationID and DOlocationID to integer and ensuring they are valid
+        case when try_cast(PUlocationID as integer) is not null and try_cast(PUlocationID as integer) >= 0
              then try_cast(PUlocationID as integer)
-             else NULL
+             else -1  -- Default value to handle invalid values
         end as pickup_location_id,
-        case when try_cast(DOlocationID as integer) > 0
+        case when try_cast(DOlocationID as integer) is not null and try_cast(DOlocationID as integer) >= 0
              then try_cast(DOlocationID as integer)
-             else NULL
+             else -1  -- Default value to handle invalid values
         end as dropoff_location_id,
 
         -- Handling null values and renaming SR_Flag to shared_ride_flag
         case when try_cast(SR_Flag as integer) in (0, 1)
              then try_cast(SR_Flag as integer)
-             else NULL
+             else 0  -- Default value to handle invalid values
         end as shared_ride_flag,
 
         -- Handling null values and renaming Affiliated_base_number to affiliated_base_number
@@ -39,7 +37,6 @@ with cleaned_fhv_tripdata as (
     from {{ source('main', 'fhv_tripdata') }}
 )
 
--- Kept all columns, even the shared_ride_flag which is mostly null
 select
     dispatching_base_num,
     pickup_datetime,
@@ -50,3 +47,9 @@ select
     affiliated_base_number,
     filename
 from cleaned_fhv_tripdata
+where
+    pickup_datetime is not null
+    and dropoff_datetime is not null
+    and pickup_datetime <= dropoff_datetime
+    and pickup_location_id is not null
+    and dropoff_location_id is not null

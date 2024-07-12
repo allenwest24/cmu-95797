@@ -1,5 +1,3 @@
--- models/staging/stg__fhv_bases.sql
-
 {{ config(
     materialized='view',
     alias='for_hire_vehicle_bases'
@@ -27,18 +25,20 @@ with cleaned_fhv_bases as (
         ) as base_name,
         
         -- Standardize dba to all uppercase, trim leading/trailing whitespace, normalize common abbreviations, and rename the column to doing_business_as for clarity
-        nullif(
-            replace(
+        coalesce(
+            nullif(
                 replace(
                     replace(
-                        upper(trim(try_cast(dba as varchar))),
-                        ' INC.', ' INC'
+                        replace(
+                            upper(trim(try_cast(dba as varchar))),
+                            ' INC.', ' INC'
+                        ),
+                        ' CORP.', ' CORP'
                     ),
-                    ' CORP.', ' CORP'
+                    ' LLC.', ' LLC'
                 ),
-                ' LLC.', ' LLC'
-            ),
-            ''
+                ''
+            ), 'UNKNOWN'
         ) as doing_business_as,
         
         -- Standardize dba_category to all uppercase, trim leading/trailing whitespace, normalize common abbreviations, and rename the column to doing_business_as_category for clarity

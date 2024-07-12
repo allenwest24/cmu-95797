@@ -1,3 +1,0 @@
-packages:
-  - git: "https://github.com/dbt-labs/dbt-codegen.git"
-    revision: "0.12.1"

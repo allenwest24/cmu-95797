@@ -1,5 +1,3 @@
--- models/staging/stg__fhvhv_tripdata.sql
-
 {{ config(
     materialized='view',
     alias='for_hire_vehicle_trip_data_extended'
@@ -75,35 +73,35 @@ with cleaned_fhvhv_tripdata as (
              else NULL
         end as driver_pay,
         
-        -- Standardize flag columns to uppercase, trim leading/trailing whitespace, and try_cast to varchar
+        -- Standardize flag columns to boolean
         case 
-            when upper(trim(try_cast(shared_request_flag as varchar))) = 'Y' then 'Y'
-            when upper(trim(try_cast(shared_request_flag as varchar))) = 'N' then 'N'
-            else 'N' 
+            when upper(trim(try_cast(shared_request_flag as varchar))) = 'Y' then TRUE
+            when upper(trim(try_cast(shared_request_flag as varchar))) = 'N' then FALSE
+            else FALSE
         end as shared_request_flag,
 
         case 
-            when upper(trim(try_cast(shared_match_flag as varchar))) = 'Y' then 'Y'
-            when upper(trim(try_cast(shared_match_flag as varchar))) = 'N' then 'N'
-            else 'N' 
+            when upper(trim(try_cast(shared_match_flag as varchar))) = 'Y' then TRUE
+            when upper(trim(try_cast(shared_match_flag as varchar))) = 'N' then FALSE
+            else FALSE
         end as shared_match_flag,
 
         case 
-            when upper(trim(try_cast(access_a_ride_flag as varchar))) = 'Y' then 'Y'
-            when upper(trim(try_cast(access_a_ride_flag as varchar))) = 'N' then 'N'
-            else 'N' 
+            when upper(trim(try_cast(access_a_ride_flag as varchar))) = 'Y' then TRUE
+            when upper(trim(try_cast(access_a_ride_flag as varchar))) = 'N' then FALSE
+            else FALSE
         end as access_a_ride_flag,
 
         case 
-            when upper(trim(try_cast(wav_request_flag as varchar))) = 'Y' then 'Y'
-            when upper(trim(try_cast(wav_request_flag as varchar))) = 'N' then 'N'
-            else 'N' 
+            when upper(trim(try_cast(wav_request_flag as varchar))) = 'Y' then TRUE
+            when upper(trim(try_cast(wav_request_flag as varchar))) = 'N' then FALSE
+            else FALSE
         end as wav_request_flag,
 
         case 
-            when upper(trim(try_cast(wav_match_flag as varchar))) = 'Y' then 'Y'
-            when upper(trim(try_cast(wav_match_flag as varchar))) = 'N' then 'N'
-            else 'N' 
+            when upper(trim(try_cast(wav_match_flag as varchar))) = 'Y' then TRUE
+            when upper(trim(try_cast(wav_match_flag as varchar))) = 'N' then FALSE
+            else FALSE
         end as wav_match_flag,
         
         -- Casting filename to varchar

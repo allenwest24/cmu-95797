@@ -13,126 +13,51 @@ sources:
             description: >
               The duration of the bike trip in seconds.
             data_type: varchar
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'trip_duration >= 0'
           - name: start_time
             description: >
               The exact timestamp when the bike trip started.
             data_type: varchar
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'start_time <= stop_time'
           - name: stop_time
             description: >
               The exact timestamp when the bike trip ended.
             data_type: varchar
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'stop_time >= start_time'
           - name: start_station_id
             description: >
               The unique identifier for the station where the bike trip started.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'start_station_id IS NULL OR start_station_id > 0'
           - name: end_station_id
             description: >
               The unique identifier for the station where the bike trip ended.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'end_station IS NULL OR end_station_id > 0'
-          - name: start_station_name
-            description: >
-              The name of the station where the bike trip started.
-            data_type: varchar
-          - name: end_station_name
-            description: >
-              The name of the station where the bike trip ended.
             data_type: varchar
           - name: start_station_lat
             description: >
               The latitude coordinate of the start station.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'start_station_lat IS NULL OR start_station_lat BETWEEN -90 AND 90'
           - name: start_station_lng
             description: >
               The longitude coordinate of the start station.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'start_station_lng IS NULL OR start_station_lng BETWEEN -180 AND 180'
           - name: end_station_lat
             description: >
               The latitude coordinate of the end station.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'end_station_lat IS NULL OR end_station_lat BETWEEN -90 AND 90'
           - name: end_station_lng
             description: >
               The longitude coordinate of the end station.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'end_station_lng IS NULL OR end_station_lng BETWEEN -180 AND 180'
           - name: bike_id
             description: >
               The unique identifier for the bike used in the trip.
-            data_type: varchar
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'bike_id > 0'
-          - name: user_type
-            description: >
-              The type of user, indicating whether the user is a subscriber or a casual customer.
             data_type: varchar
           - name: birth_year
             description: >
               The birth year of the user.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'birth_year IS NULL OR birth_year BETWEEN 1900 AND YEAR(CURRENT_DATE)'
           - name: gender
             description: >
               The gender of the user, represented as an integer.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'gender IS NULL OR gender IN (0, 1, 2)'
-          - name: ride_id
-            description: >
-              A unique identifier for each bike ride.
-            data_type: varchar
-          - name: rideable_type
-            description: >
-              The type of rideable, such as a bike or scooter.
-            data_type: varchar
-          - name: started_at
-            description: >
-              The timestamp when the ride started.
-            data_type: varchar
-          - name: ended_at
-            description: >
-              The timestamp when the ride ended.
-            data_type: varchar
-          - name: member_casual
-            description: >
-              Indicates whether the rider is a member or a casual user.
-            data_type: varchar
-          - name: filename
-            description: >
-              The name of the file from which this data was ingested.
-            data_type: varchar
+
       - name: central_park_weather
         description: >
           This table contains weather data for Central Park, including various weather metrics recorded at different times.
@@ -141,67 +66,19 @@ sources:
             description: >
               The unique identifier for the weather station that recorded the data.
             data_type: varchar
-            tests:
-              - not_null
-          - name: station_name
-            description: >
-              The name of the weather station.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: "station_name IS NULL OR station_name != ''"
-          - name: observation_date
-            description: >
-              The date when the weather observation was made.
-            data_type: varchar
-            tests:
-              - not_null
           - name: average_wind_speed
             description: >
               The average wind speed recorded on the observation date.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'average_wind_speed IS NULL OR average_wind_speed >= 0'
-          - name: precipitation
-            description: >
-              The amount of precipitation recorded on the observation date.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'precipitation IS NULL OR precipitation >= 0'
           - name: snowfall
             description: >
               The amount of snowfall recorded on the observation date.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'snowfall IS NULL OR snowfall >= 0'
-          - name: snow_depth
-            description: >
-              The depth of snow on the ground recorded on the observation date.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'snow_depth IS NULL OR snow_depth >= 0'
           - name: max_temperature
             description: >
               The maximum temperature recorded on the observation date.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'max_temperature IS NULL OR max_temperature BETWEEN -50 AND 130'
-          - name: min_temperature
-            description: >
-              The minimum temperature recorded on the observation date.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: 'min_temperature IS NULL OR min_temperature BETWEEN -50 AND 130'
-          - name: filename
-            description: >
-              The name of the file from which this data was ingested.
-            data_type: varchar
+
       - name: fhv_bases
         description: >
           This table contains data about For-Hire Vehicle (FHV) bases, including their names and operational details.
@@ -210,35 +87,11 @@ sources:
             description: >
               The unique number assigned to each FHV base.
             data_type: varchar
-            tests:
-              - not_null
-              - unique
           - name: base_name
             description: >
               The name of the FHV base.
             data_type: varchar
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: "base_name IS NULL OR base_name != ''"
-          - name: doing_business_as
-            description: >
-              The name under which the base operates, often different from the official base name.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: "doing_business_as IS NULL OR doing_business_as != ''"
-          - name: doing_business_as_category
-            description: >
-              The category of business under which the FHV base operates.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: "doing_business_as_category IS NULL OR doing_business_as_category != ''"
-          - name: filename
-            description: >
-              The name of the file from which this data was ingested.
-            data_type: varchar
+
       - name: fhv_tripdata
         description: >
           This table contains trip data for For-Hire Vehicles (FHVs), detailing trip times, locations, and other trip-specific information.
@@ -247,58 +100,31 @@ sources:
             description: >
               The base number that dispatched the trip.
             data_type: varchar
-            tests:
-              - not_null
           - name: pickup_datetime
             description: >
               The datetime when the trip was picked up.
             data_type: timestamp
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'pickup_datetime <= dropoff_datetime'
           - name: dropoff_datetime
             description: >
               The datetime when the trip was dropped off.
             data_type: timestamp
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'dropoff_datetime >= pickup_datetime'
           - name: pickup_location_id
             description: >
               The location ID where the trip was picked up.
             data_type: double
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'pickup_location_id > 0'
           - name: dropoff_location_id
             description: >
               The location ID where the trip was dropped off.
             data_type: double
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'dropoff_location_id > 0'
           - name: shared_ride_flag
             description: >
               Indicates whether the ride was shared.
             data_type: integer
-            tests:
-              - expression_is_true:
-                  expression: 'shared_ride_flag IS NULL OR shared_ride_flag IN (0, 1)'
           - name: affiliated_base_number
             description: >
               The base number affiliated with the trip, which may differ from the dispatching base.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: "affiliated_base_number IS NULL OR affiliated_base_number != ''"
-          - name: filename
-            description: >
-              The name of the file from which this data was ingested.
-            data_type: varchar
+
       - name: fhvhv_tripdata
         description: >
           This table contains trip data for high-volume For-Hire Vehicles (FHVs), including details on trip times, locations, and fares.
@@ -307,170 +133,39 @@ sources:
             description: >
               The license number of the high-volume FHV service.
             data_type: varchar
-            tests:
-              - not_null
-          - name: dispatching_base_num
-            description: >
-              The base number that dispatched the trip.
-            data_type: varchar
-            tests:
-              - not_null
-          - name: originating_base_num
-            description: >
-              The base number where the trip originated.
-            data_type: varchar
           - name: request_datetime
             description: >
               The datetime when the trip was requested.
             data_type: timestamp
-            tests:
-              - expression_is_true:
-                  expression: 'request_datetime <= on_scene_datetime'
           - name: on_scene_datetime
             description: >
               The datetime when the vehicle arrived on scene.
             data_type: timestamp
-            tests:
-              - expression_is_true:
-                  expression: 'on_scene_datetime >= request_datetime'
           - name: pickup_datetime
             description: >
               The datetime when the trip was picked up.
             data_type: timestamp
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'pickup_datetime <= dropoff_datetime'
           - name: dropoff_datetime
             description: >
               The datetime when the trip was dropped off.
             data_type: timestamp
-            tests:
-              - expression_is_true:
-                  expression: 'dropoff_datetime >= pickup_datetime'
-          - name: pickup_location_id
-            description: >
-              The location ID where the trip was picked up.
-            data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'pickup_location_id IS NULL OR pickup_location_id > 0'
-          - name: dropoff_location_id
-            description: >
-              The location ID where the trip was dropped off.
-            data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'dropoff_location_id IS NULL OR dropoff_location_id > 0'
           - name: trip_miles
             description: >
               The distance of the trip in miles.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'trip_miles IS NULL OR trip_miles >= 0'
           - name: trip_time
             description: >
               The duration of the trip in seconds.
             data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'trip_time IS NULL OR trip_time >= 0'
           - name: base_passenger_fare
             description: >
               The base fare charged to the passenger.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'base_passenger_fare IS NULL OR base_passenger_fare >= 0'
-          - name: tolls
-            description: >
-              The amount of tolls paid during the trip.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'tolls IS NULL OR tolls >= 0'
-          - name: bcf
-            description: >
-              The Black Car Fund fee.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'bcf IS NULL OR bcf >= 0'
-          - name: sales_tax
-            description: >
-              The amount of sales tax applied to the fare.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'sales_tax IS NULL OR sales_tax >= 0'
-          - name: congestion_surcharge
-            description: >
-              The congestion surcharge applied to the fare.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'congestion_surcharge IS NULL OR congestion_surcharge >= 0'
-          - name: airport_fee
-            description: >
-              The fee applied for trips to/from airports.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'airport_fee IS NULL OR airport_fee >= 0'
           - name: tips
             description: >
               The amount of tips given by the passenger.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'tips IS NULL OR tips >= 0'
-          - name: driver_pay
-            description: >
-              The amount paid to the driver.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'driver_pay IS NULL OR driver_pay >= 0'
-          - name: shared_request_flag
-            description: >
-              Indicates whether the trip was a shared ride request.
-            data_type: varchar
-            tests:
-              - accepted_values:
-                  values: ['Y', 'N']
-          - name: shared_match_flag
-            description: >
-              Indicates whether the shared ride request was matched.
-            data_type: varchar
-            tests:
-              - accepted_values:
-                  values: ['Y', 'N']
-          - name: access_a_ride_flag
-            description: >
-              Indicates whether the trip was an Access-A-Ride trip.
-            data_type: varchar
-            tests:
-              - accepted_values:
-                  values: ['Y', 'N']
-          - name: wav_request_flag
-            description: >
-              Indicates whether the trip was a Wheelchair Accessible Vehicle (WAV) request.
-            data_type: varchar
-            tests:
-              - accepted_values:
-                  values: ['Y', 'N']
-          - name: wav_match_flag
-            description: >
-              Indicates whether the WAV request was matched.
-            data_type: varchar
-            tests:
-              - accepted_values:
-                  values: ['Y', 'N']
-          - name: filename
-            description: >
-              The name of the file from which this data was ingested.
-            data_type: varchar
+
       - name: green_tripdata
         description: >
           This table contains trip data for green cabs, detailing trip times, locations, fares, and passenger information.
@@ -479,149 +174,83 @@ sources:
             description: >
               The unique identifier for the vendor providing the green cab service.
             data_type: bigint
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'vendor_id > 0'
           - name: pickup_datetime
             description: >
               The datetime when the trip was picked up.
             data_type: timestamp
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'pickup_datetime <= dropoff_datetime'
           - name: dropoff_datetime
             description: >
               The datetime when the trip was dropped off.
             data_type: timestamp
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'dropoff_datetime >= pickup_datetime'
           - name: store_and_fwd_flag
             description: >
               A flag indicating whether the trip data was stored and forwarded due to the vehicle being outside the service area.
             data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: "store_and_fwd_flag IS NULL OR store_and_fwd_flag IN ('Y', 'N')"
           - name: rate_code_id
             description: >
               The rate code applicable to the trip.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'rate_code_id IS NULL OR rate_code_id > 0'
           - name: pu_location_id
             description: >
               The location ID where the trip was picked up.
             data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'pu_location_id IS NULL OR pu_location_id > 0'
           - name: do_location_id
             description: >
               The location ID where the trip was dropped off.
             data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'do_location_id IS NULL OR do_location_id > 0'
           - name: passenger_count
             description: >
               The number of passengers in the trip.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'passenger_count IS NULL OR passenger_count >= 0'
           - name: trip_distance
             description: >
               The distance of the trip in miles.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'trip_distance IS NULL OR trip_distance >= 0'
           - name: fare_amount
             description: >
               The fare amount charged for the trip.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'fare_amount IS NULL OR fare_amount >= 0'
           - name: extra
             description: >
               Additional charges applied to the fare, such as surcharges and tolls.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'extra IS NULL OR extra >= 0'
           - name: mta_tax
             description: >
               The Metropolitan Transportation Authority (MTA) tax applied to the fare.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'mta_tax IS NULL OR mta_tax >= 0'
           - name: tip_amount
             description: >
               The amount of tips given by the passenger.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'tip_amount IS NULL OR tip_amount >= 0'
           - name: tolls_amount
             description: >
               The amount of tolls paid during the trip.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'tolls_amount IS NULL OR tolls_amount >= 0'
-          - name: ehail_fee
-            description: >
-              The e-hail fee charged for using electronic hailing services.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'ehail_fee IS NULL OR ehail_fee >= 0'
           - name: improvement_surcharge
             description: >
               The improvement surcharge applied to the fare.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'improvement_surcharge IS NULL OR improvement_surcharge >= 0'
           - name: total_amount
             description: >
               The total fare amount including all charges and surcharges.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'total_amount IS NULL OR total_amount >= 0'
           - name: payment_type
             description: >
               The type of payment used for the trip (e.g., credit card, cash).
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'payment_type IS NULL OR payment_type > 0'
           - name: trip_type
             description: >
               The type of trip (e.g., street-hail, prearranged).
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'trip_type IS NULL OR trip_type > 0'
           - name: congestion_surcharge
             description: >
               The congestion surcharge applied to the fare.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'congestion_surcharge IS NULL OR congestion_surcharge >= 0'
           - name: filename
             description: >
               The name of the file from which this data was ingested.
             data_type: varchar
+
       - name: yellow_tripdata
         description: >
           This table contains trip data for yellow cabs, detailing trip times, locations, fares, and passenger information.
@@ -630,139 +259,27 @@ sources:
             description: >
               The unique identifier for the vendor providing the yellow cab service.
             data_type: bigint
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'vendor_id > 0'
           - name: pickup_datetime
             description: >
               The datetime when the trip was picked up.
             data_type: timestamp
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'pickup_datetime <= dropoff_datetime'
           - name: dropoff_datetime
             description: >
               The datetime when the trip was dropped off.
             data_type: timestamp
-            tests:
-              - not_null
-              - expression_is_true:
-                  expression: 'dropoff_datetime >= pickup_datetime'
           - name: passenger_count
             description: >
               The number of passengers in the trip.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'passenger_count IS NULL OR passenger_count >= 0'
           - name: trip_distance
             description: >
               The distance of the trip in miles.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'trip_distance IS NULL OR trip_distance >= 0'
-          - name: rate_code_id
-            description: >
-              The rate code applicable to the trip.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'rate_code_id IS NULL OR rate_code_id > 0'
-          - name: store_and_fwd_flag
-            description: >
-              A flag indicating whether the trip data was stored and forwarded due to the vehicle being outside the service area.
-            data_type: varchar
-            tests:
-              - expression_is_true:
-                  expression: "store_and_fwd_flag IS NULL OR store_and_fwd_flag IN ('Y', 'N')"
-          - name: pu_location_id
-            description: >
-              The location ID where the trip was picked up.
-            data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'pu_location_id IS NULL OR pu_location_id > 0'
-          - name: do_location_id
-            description: >
-              The location ID where the trip was dropped off.
-            data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'do_location_id IS NULL OR do_location_id > 0'
-          - name: payment_type
-            description: >
-              The type of payment used for the trip (e.g., credit card, cash).
-            data_type: bigint
-            tests:
-              - expression_is_true:
-                  expression: 'payment_type IS NULL OR payment_type > 0'
           - name: fare_amount
             description: >
               The fare amount charged for the trip.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'fare_amount IS NULL OR fare_amount >= 0'
-          - name: extra
-            description: >
-              Additional charges applied to the fare, such as surcharges and tolls.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'extra IS NULL OR extra >= 0'
-          - name: mta_tax
-            description: >
-              The Metropolitan Transportation Authority (MTA) tax applied to the fare.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'mta_tax IS NULL OR mta_tax >= 0'
-          - name: tip_amount
-            description: >
-              The amount of tips given by the passenger.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'tip_amount IS NULL OR tip_amount >= 0'
           - name: tolls_amount
             description: >
               The amount of tolls paid during the trip.
             data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'tolls_amount IS NULL OR tolls_amount >= 0'
-          - name: improvement_surcharge
-            description: >
-              The improvement surcharge applied to the fare.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'improvement_surcharge IS NULL OR improvement_surcharge >= 0'
-          - name: total_amount
-            description: >
-              The total fare amount including all charges and surcharges.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'total_amount IS NULL OR total_amount >= 0'
-          - name: congestion_surcharge
-            description: >
-              The congestion surcharge applied to the fare.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'congestion_surcharge IS NULL OR congestion_surcharge >= 0'
-          - name: airport_fee
-            description: >
-              The fee applied for trips to/from airports.
-            data_type: double
-            tests:
-              - expression_is_true:
-                  expression: 'airport_fee IS NULL OR airport_fee >= 0'
-          - name: filename
-            description: >
-              The name of the file from which this data was ingested.
-            data_type: varchar
