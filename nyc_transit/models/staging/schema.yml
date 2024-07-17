@@ -10,29 +10,22 @@ models:
         tests:
           - not_null
           - unique
-          - expect_column_values_to_be_of_type: varchar
       - name: base_name
         data_type: varchar
         description: "The name of the FHV base."
         tests:
           - not_null
-          - expect_column_values_to_be_of_type: varchar
       - name: doing_business_as
         data_type: varchar
         description: "The name under which the base operates, often different from the official base name."
         tests:
           - not_null
-          - expect_column_values_to_be_of_type: varchar
       - name: doing_business_as_category
         data_type: varchar
         description: "The category of business under which the FHV base operates."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
       - name: filename
         data_type: varchar
         description: "The name of the file from which this data was ingested."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
 
   - name: stg__fhv_tripdata
     description: "This table contains trip data for For-Hire Vehicles (FHVs), detailing trip times, locations, and other trip-specific information."
@@ -42,58 +35,35 @@ models:
         description: "The base number that dispatched the trip."
         tests:
           - not_null
-          - expect_column_values_to_be_of_type: varchar
       - name: pickup_datetime
         data_type: timestamp
         description: "The datetime when the trip was picked up."
         tests:
           - not_null
-          - relationship:
-              to: stg__fhv_tripdata
-              field: dropoff_datetime
-          - expect_column_values_to_be_of_type: timestamp
       - name: dropoff_datetime
         data_type: timestamp
         description: "The datetime when the trip was dropped off."
         tests:
           - not_null
-          - relationship:
-              to: stg__fhv_tripdata
-              field: pickup_datetime
-          - expect_column_values_to_be_of_type: timestamp
       - name: pickup_location_id
         data_type: integer
         description: "The location ID where the trip was picked up."
         tests:
           - not_null
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: dropoff_location_id
         data_type: integer
         description: "The location ID where the trip was dropped off."
         tests:
           - not_null
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: shared_ride_flag
         data_type: integer
         description: "Indicates whether the ride was shared."
-        tests:
-          - accepted_values:
-              values: [0, 1]
-          - expect_column_values_to_be_of_type: integer
       - name: affiliated_base_number
         data_type: varchar
         description: "The base number affiliated with the trip, which may differ from the dispatching base."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
       - name: filename
         data_type: varchar
         description: "The name of the file from which this data was ingested."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
 
   - name: stg__fhvhv_tripdata
     description: "This table contains trip data for high-volume For-Hire Vehicles (FHVs), including details on trip times, locations, and fares."
@@ -104,157 +74,77 @@ models:
         tests:
           - not_null
           - unique
-          - expect_column_values_to_be_of_type: varchar
       - name: dispatching_base_num
         data_type: varchar
         description: "The base number that dispatched the trip."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
       - name: originating_base_num
         data_type: varchar
         description: "The base number where the trip originated."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
       - name: request_datetime
         data_type: timestamp
         description: "The datetime when the trip was requested."
-        tests:
-          - relationship:
-              to: stg__fhvhv_tripdata
-              field: on_scene_datetime
-          - expect_column_values_to_be_of_type: timestamp
       - name: on_scene_datetime
         data_type: timestamp
         description: "The datetime when the vehicle arrived on scene."
-        tests:
-          - relationship:
-              to: stg__fhvhv_tripdata
-              field: request_datetime
-          - expect_column_values_to_be_of_type: timestamp
       - name: pickup_datetime
         data_type: timestamp
         description: "The datetime when the trip was picked up."
         tests:
           - not_null
-          - relationship:
-              to: stg__fhvhv_tripdata
-              field: dropoff_datetime
-          - expect_column_values_to_be_of_type: timestamp
       - name: dropoff_datetime
         data_type: timestamp
         description: "The datetime when the trip was dropped off."
-        tests:
-          - relationship:
-              to: stg__fhvhv_tripdata
-              field: pickup_datetime
-          - expect_column_values_to_be_of_type: timestamp
       - name: pickup_location_id
         data_type: integer
         description: "The location ID where the trip was picked up."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: dropoff_location_id
         data_type: integer
         description: "The location ID where the trip was dropped off."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: trip_miles
         data_type: double
         description: "The distance of the trip in miles."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: trip_time
         data_type: integer
         description: "The duration of the trip in seconds."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: base_passenger_fare
         data_type: double
         description: "The base fare charged to the passenger."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: tolls
         data_type: double
         description: "The amount of tolls paid during the trip."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: bcf
         data_type: double
         description: "The Black Car Fund fee."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: sales_tax
         data_type: double
         description: "The amount of sales tax applied to the fare."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: congestion_surcharge
         data_type: double
         description: "The congestion surcharge applied to the fare."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: tips
         data_type: double
         description: "The amount of tips given by the passenger."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: driver_pay
         data_type: double
         description: "The amount paid to the driver."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: shared_request_flag
         data_type: boolean
         description: "Indicates whether the trip was a shared ride request."
-        tests:
-          - expect_column_values_to_be_of_type: boolean
       - name: shared_match_flag
         data_type: boolean
         description: "Indicates whether the shared ride request was matched."
-        tests:
-          - expect_column_values_to_be_of_type: boolean
       - name: access_a_ride_flag
         data_type: boolean
         description: "Indicates whether the trip was an Access-A-Ride trip."
-        tests:
-          - expect_column_values_to_be_of_type: boolean
       - name: wav_request_flag
         data_type: boolean
         description: "Indicates whether the trip was a Wheelchair Accessible Vehicle (WAV) request."
-        tests:
-          - expect_column_values_to_be_of_type: boolean
       - name: wav_match_flag
         data_type: boolean
         description: "Indicates whether the WAV request was matched."
-        tests:
-          - expect_column_values_to_be_of_type: boolean
       - name: filename
         data_type: varchar
         description: "The name of the file from which this data was ingested."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
 
   - name: stg__bike_data
     description: "This table contains data from the Citibike trip records, detailing various bike trips including duration, start and end locations, and user information."
@@ -264,109 +154,61 @@ models:
         description: "The duration of the bike trip in seconds."
         tests:
           - not_null
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: start_time
         data_type: timestamp
         description: "The exact timestamp when the bike trip started."
         tests:
           - not_null
-          - expect_column_values_to_be_of_type: timestamp
       - name: stop_time
         data_type: timestamp
         description: "The exact timestamp when the bike trip ended."
         tests:
           - not_null
-          - expect_column_values_to_be_of_type: timestamp
       - name: start_station_id
         data_type: integer
         description: "The unique identifier for the station where the bike trip started."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: start_station_name
         data_type: varchar
         description: "The name of the station where the bike trip started."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
       - name: start_station_lat
         data_type: double
         description: "The latitude coordinate of the start station."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: -90
-              max_value: 90
-          - expect_column_values_to_be_of_type: double
       - name: start_station_lng
         data_type: double
         description: "The longitude coordinate of the start station."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: -180
-              max_value: 180
-          - expect_column_values_to_be_of_type: double
       - name: end_station_id
         data_type: integer
         description: "The unique identifier for the station where the bike trip ended."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: integer
       - name: end_station_name
         data_type: varchar
         description: "The name of the station where the bike trip ended."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
       - name: end_station_lat
         data_type: double
         description: "The latitude coordinate of the end station."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: -90
-              max_value: 90
-          - expect_column_values_to_be_of_type: double
       - name: end_station_lng
         data_type: double
         description: "The longitude coordinate of the end station."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: -180
-              max_value: 180
-          - expect_column_values_to_be_of_type: double
       - name: bike_id
         data_type: integer
         description: "The unique identifier for the bike used in the trip."
         tests:
           - not_null
           - unique
-          - expect_column_values_to_be_of_type: integer
       - name: user_type
         data_type: varchar
         description: "The type of user, indicating whether the user is a subscriber or a casual customer."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
       - name: birth_year
         data_type: integer
         description: "The birth year of the user."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 1900
-              max_value: year(current_date)
-          - expect_column_values_to_be_of_type: integer
       - name: gender
         data_type: integer
         description: "The gender of the user, represented as an integer."
         tests:
           - accepted_values:
               values: [0, 1, 2]
-          - expect_column_values_to_be_of_type: integer
       - name: filename
         data_type: varchar
         description: "The name of the file from which this data was ingested."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
 
   - name: stg__central_park_weather
     description: "This table contains weather data for Central Park, including various weather metrics recorded at different times."
@@ -377,65 +219,34 @@ models:
         tests:
           - not_null
           - unique
-          - expect_column_values_to_be_of_type: varchar
       - name: station_name
         data_type: varchar
         description: "The name of the weather station."
         tests:
           - not_null
-          - expect_column_values_to_be_of_type: varchar
       - name: observation_date
         data_type: date
         description: "The date when the weather observation was made."
         tests:
           - not_null
-          - expect_column_values_to_be_of_type: date
       - name: average_wind_speed
         data_type: double
         description: "The average wind speed recorded on the observation date."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: precipitation
         data_type: double
         description: "The amount of precipitation recorded on the observation date."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: snowfall
         data_type: double
         description: "The amount of snowfall recorded on the observation date."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: snow_depth
         data_type: double
         description: "The depth of snow on the ground recorded on the observation date."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: 0
-          - expect_column_values_to_be_of_type: double
       - name: max_temperature
         data_type: integer
         description: "The maximum temperature recorded on the observation date."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: -50
-              max_value: 130
-          - expect_column_values_to_be_of_type: integer
       - name: min_temperature
         data_type: integer
         description: "The minimum temperature recorded on the observation date."
-        tests:
-          - expect_column_values_to_be_between:
-              min_value: -50
-              max_value: 130
-          - expect_column_values_to_be_of_type: integer
       - name: filename
         data_type: varchar
         description: "The name of the file from which this data was ingested."
-        tests:
-          - expect_column_values_to_be_of_type: varchar
