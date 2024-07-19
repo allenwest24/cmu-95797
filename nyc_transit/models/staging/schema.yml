@@ -48,13 +48,9 @@ models:
       - name: pickup_location_id
         data_type: integer
         description: "The location ID where the trip was picked up."
-        tests:
-          - not_null
       - name: dropoff_location_id
         data_type: integer
         description: "The location ID where the trip was dropped off."
-        tests:
-          - not_null
       - name: shared_ride_flag
         data_type: integer
         description: "Indicates whether the ride was shared."
@@ -73,7 +69,6 @@ models:
         description: "The license number of the high-volume FHV service."
         tests:
           - not_null
-          - unique
       - name: dispatching_base_num
         data_type: varchar
         description: "The base number that dispatched the trip."

@@ -1,0 +1,84 @@
+models:
+  - name: mart__dim_bike_stations
+    description: "bike stations with name, latitude and longitude"
+    columns:
+      - name: station_id
+        description: "bike station id, primary key"
+      - name: station_name
+        description: "name of the bike station"
+      - name: station_lat
+        description: "latitude of the bike station"
+      - name: station_lng
+        description: "longitude of the bike station"
+
+  - name: mart__dim_locations
+    description: "taxi locations, used to join with pulocationid and dolocationid, taken from dbt seed. Not tested as data is small enough to check visually, as should be the case with use of seeds"
+    columns:
+      - name: locationid
+        description: "primary key"
+      - name: borough
+        description: "borough where the location is situated"
+      - name: zone
+        description: "zone within the borough"
+      - name: service_zone
+        description: "service zone for the location"
+
+  - name: mart__fact_all_bike_trips
+    description: "bike trip data normalized with station data stripped out to dim"
+    columns:
+      - name: started_at_ts
+        description: "start time of the bike trip"
+      - name: ended_at_ts
+        description: "end time of the bike trip"
+      - name: duration_min
+        description: "trip duration in minutes"
+      - name: duration_sec
+        description: "trip duration in seconds"
+      - name: start_station_id
+        description: "ID of the start station"
+      - name: end_station_id
+        description: "ID of the end station"
+
+  - name: mart__fact_all_taxi_trips
+    description: "all taxi trip data for analysis"
+    columns:
+      - name: type
+        description: "type of taxi trip"
+      - name: pickup_datetime
+        description: "pickup time of the trip"
+      - name: dropoff_datetime
+        description: "dropoff time of the trip"
+      - name: duration_min
+        description: "trip duration in minutes"
+      - name: duration_sec
+        description: "trip duration in seconds"
+      - name: pulocationid
+        description: "pickup location ID"
+      - name: dolocationid
+        description: "dropoff location ID"
+
+  - name: mart__fact_all_trips_daily
+    description: "all trips including bikes and taxis grouped by day, with averaged trip duration"
+    columns:
+      - name: type
+        description: "type of trip"
+      - name: date
+        description: "date of the trip"
+      - name: trips
+        description: "number of trips"
+      - name: average_trip_duration_min
+        description: "average trip duration in minutes"
+
+  - name: mart__fact_all_trips
+    description: "all trips including bikes and taxis with duration"
+    columns:
+      - name: type
+        description: "type of trip"
+      - name: started_at_ts
+        description: "start time of the trip"
+      - name: ended_at_ts
+        description: "end time of the trip"
+      - name: duration_min
+        description: "trip duration in minutes"
+      - name: duration_sec
+        description: "trip duration in seconds"
