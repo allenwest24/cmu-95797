@@ -1,0 +1,7 @@
+D .read /Users/cybersaur/Desktop/Projects/cmu-95797/nyc_transit/target/compiled/nyc_transit/analyses/days_before_precip_more_bike_trips.sql
+┌──────────────────────┬────────────────────────────────┬─────────────────────────────────┐
+│       day_type       │ avg_trips_before_precipitation │ avg_trips_on_precipitation_days │
+│       varchar        │             double             │             double              │
+├──────────────────────┼────────────────────────────────┼─────────────────────────────────┤
+│ no_precipitation_day │                                │                                 │
+└──────────────────────┴────────────────────────────────┴─────────────────────────────────┘

@@ -82,3 +82,11 @@ models:
         description: "trip duration in minutes"
       - name: duration_sec
         description: "trip duration in seconds"
+
+  - name: mart__fact_trips_by_borough
+    description: "number of trips grouped by pickup borough"
+    columns:
+      - name: pickup_borough
+        description: "The borough where the trip started"
+      - name: number_of_trips
+        description: "The number of trips that started in the borough" 

@@ -1,0 +1,52 @@
+D .read /Users/cybersaur/Desktop/Projects/cmu-95797/nyc_transit/target/compiled/nyc_transit/analyses/average_time_between_pickups.sql
+100% ▕████████████████████████████████████████████████████████████▏
+┌─────────────────────────────────────┬──────────────────────────┐
+│                Zone                 │ avg_time_between_pickups │
+│               varchar               │          double          │
+├─────────────────────────────────────┼──────────────────────────┤
+│ Springfield Gardens South           │        15.70344014798902 │
+│ Windsor Terrace                     │        22.50610447091022 │
+│ Richmond Hill                       │        7.485230537304093 │
+│ Hillcrest/Pomonok                   │       14.334173112539492 │
+│ Sheepshead Bay                      │        9.396439985002946 │
+│ NA                                  │       35.944161743109866 │
+│ Longwood                            │       11.777908316829468 │
+│ Marble Hill                         │       25.696091594853893 │
+│ East Williamsburg                   │        4.282473555736371 │
+│ Ocean Parkway South                 │        28.86764665551381 │
+│ Rockaway Park                       │       51.791418589775134 │
+│ Kew Gardens                         │       15.176634274344705 │
+│ UN/Turtle Bay South                 │        4.228691372903485 │
+│ Lenox Hill West                     │       2.8508325298724935 │
+│ Howard Beach                        │        24.12265383293228 │
+│ Great Kills                         │        53.07352125460138 │
+│ Middle Village                      │       15.340693132797016 │
+│ New Dorp/Midland Beach              │        57.42225859247136 │
+│ Highbridge Park                     │        295.4974733295901 │
+│ Melrose South                       │        5.993378237574944 │
+│       ·                             │                ·         │
+│       ·                             │                ·         │
+│       ·                             │                ·         │
+│ Breezy Point/Fort Tilden/Riis Beach │       320.65254495580615 │
+│ Crotona Park East                   │       10.843765452447668 │
+│ Elmhurst/Maspeth                    │       15.806198756644743 │
+│ Forest Park/Highland Park           │       208.56791592306166 │
+│ West Concourse                      │        5.481889812987257 │
+│ Long Island City/Queens Plaza       │       11.930261815708942 │
+│ Brooklyn Navy Yard                  │       38.903160229162815 │
+│ College Point                       │       23.076049545105775 │
+│ Upper West Side South               │       18.832575396573997 │
+│ Auburndale                          │        38.44880739306717 │
+│ Kensington                          │       15.484061723128521 │
+│ Bensonhurst East                    │       11.863494460661114 │
+│ Borough Park                        │        6.111476247430821 │
+│ Brownsville                         │        3.994311821469364 │
+│ Prospect Heights                    │        9.351527588994607 │
+│ Hammels/Arverne                     │        17.50256069171932 │
+│ Penn Station/Madison Sq West        │       17.611328054566716 │
+│ Central Park                        │        7.225031917960545 │
+│ Bath Beach                          │       27.944329404268874 │
+│ Flushing                            │        6.867647922334657 │
+├─────────────────────────────────────┴──────────────────────────┤
+│ 263 rows (40 shown)                                  2 columns │
+└────────────────────────────────────────────────────────────────┘

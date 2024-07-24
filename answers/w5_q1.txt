@@ -1,0 +1,52 @@
+D .read /Users/cybersaur/Desktop/Projects/cmu-95797/nyc_transit/target/compiled/nyc_transit/analyses/trips_duration_grouped_by_borough_zone.sql
+100% ▕████████████████████████████████████████████████████████████▏
+┌───────────┬────────────────────────────────┬─────────────────┬────────────────────┐
+│  Borough  │              Zone              │ number_of_trips │ avg_trip_duration  │
+│  varchar  │            varchar             │      int64      │       double       │
+├───────────┼────────────────────────────────┼─────────────────┼────────────────────┤
+│ Manhattan │ Murray Hill                    │          458571 │ 16.647262910214558 │
+│ Unknown   │ NA                             │           29282 │  35.65029711085308 │
+│ Queens    │ Jackson Heights                │          267204 │ 16.572562536488974 │
+│ Manhattan │ Stuy Town/Peter Cooper Village │           76066 │ 16.869731548918043 │
+│ Manhattan │ Washington Heights South       │          307470 │ 16.977204280092366 │
+│ Manhattan │ East Chelsea                   │          422600 │ 18.352257453857074 │
+│ Bronx     │ East Tremont                   │          169906 │ 15.359510552893953 │
+│ Brooklyn  │ Madison                        │           79670 │ 15.892782728756119 │
+│ Manhattan │ Kips Bay                       │          284734 │ 16.604083109147485 │
+│ Brooklyn  │ Brooklyn Heights               │          153445 │  19.69659487112646 │
+│ Brooklyn  │ South Williamsburg             │           54587 │ 15.525711249931302 │
+│ Brooklyn  │ Gowanus                        │           64437 │ 18.078572869624594 │
+│ Brooklyn  │ Boerum Hill                    │          177917 │ 19.488272621503285 │
+│ Brooklyn  │ Clinton Hill                   │          199875 │ 18.201190744215136 │
+│ Queens    │ Ridgewood                      │          203862 │  17.69605909880213 │
+│ Bronx     │ Claremont/Bathgate             │          138375 │ 15.262439024390243 │
+│ Manhattan │ Battery Park City              │          164791 │ 19.437954742674055 │
+│ Manhattan │ Financial District North       │          217232 │  20.33082142594093 │
+│ Manhattan │ West Village                   │          394138 │ 16.520513119770232 │
+│ Bronx     │ Fordham South                  │           87980 │  15.73747442600591 │
+│   ·       │       ·                        │             ·   │          ·         │
+│   ·       │       ·                        │             ·   │          ·         │
+│   ·       │       ·                        │             ·   │          ·         │
+│ Bronx     │ Van Cortlandt Village          │          147025 │ 15.519251827920423 │
+│ Bronx     │ Co-Op City                     │          133769 │ 16.752693075376207 │
+│ Brooklyn  │ Erasmus                        │          122425 │ 17.887825199101492 │
+│ Manhattan │ Central Harlem                 │          277405 │ 16.951799715217824 │
+│ Queens    │ Kew Gardens Hills              │           55930 │ 17.538011800464865 │
+│ Queens    │ Maspeth                        │           86140 │  15.85156721615974 │
+│ Brooklyn  │ DUMBO/Vinegar Hill             │          109224 │  18.75215154178569 │
+│ Manhattan │ Bloomingdale                   │           73269 │  17.31857948109023 │
+│ Manhattan │ Yorkville West                 │          311581 │ 16.059114644346092 │
+│ Brooklyn  │ Cypress Hills                  │          121764 │ 17.011473013370125 │
+│ Manhattan │ Randalls Island                │            4669 │ 22.020775326622402 │
+│ Brooklyn  │ Greenpoint                     │          245106 │  18.08190741964701 │
+│ Manhattan │ Inwood Hill Park               │            8946 │ 17.002235636038453 │
+│ Bronx     │ Country Club                   │           10360 │ 15.975772200772202 │
+│ Manhattan │ Lincoln Square East            │          371629 │  16.54529382798436 │
+│ Brooklyn  │ Crown Heights North            │          536054 │ 17.762120980348996 │
+│ Brooklyn  │ Bensonhurst West               │          115357 │ 16.471414825281517 │
+│ Bronx     │ Woodlawn/Wakefield             │          112050 │ 15.567389558232932 │
+│ Brooklyn  │ Williamsburg (North Side)      │          287942 │ 19.475502010821625 │
+│ Manhattan │ Upper East Side South          │          510530 │ 14.604342545981627 │
+├───────────┴────────────────────────────────┴─────────────────┴────────────────────┤
+│ 263 rows (40 shown)                                                     4 columns │
+└───────────────────────────────────────────────────────────────────────────────────┘

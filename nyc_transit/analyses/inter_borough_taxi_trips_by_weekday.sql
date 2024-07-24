@@ -1,3 +1,5 @@
+-- Already uses CTE borough_trip_counts.
+
 with borough_trip_counts as (
     select
         -- Extract the weekday from the trip pickup timestamp

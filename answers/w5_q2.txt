@@ -1,0 +1,8 @@
+D .read /Users/cybersaur/Desktop/Projects/cmu-95797/nyc_transit/target/compiled/nyc_transit/analyses/taxi_trips_no_valid_pickup_location_id.sql
+100% ▕████████████████████████████████████████████████████████████▏
+┌──────────────┐
+│ count_star() │
+│    int64     │
+├──────────────┤
+│      1611512 │
+└──────────────┘

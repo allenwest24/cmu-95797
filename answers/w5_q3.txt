@@ -1,0 +1,52 @@
+D .read /Users/cybersaur/Desktop/Projects/cmu-95797/nyc_transit/target/compiled/nyc_transit/analyses/zones_with_less_than_100k_trips.sql
+100% ▕████████████████████████████████████████████████████████████▏
+┌───────────────────────────────────┬─────────────────┐
+│               Zone                │ number_of_trips │
+│              varchar              │      int64      │
+├───────────────────────────────────┼─────────────────┤
+│ Bloomingdale                      │           73269 │
+│ Gravesend                         │           50692 │
+│ Carroll Gardens                   │           77415 │
+│ Saint Michaels Cemetery/Woodside  │           11618 │
+│ Randalls Island                   │            4669 │
+│ Country Club                      │           10360 │
+│ Inwood Hill Park                  │            8946 │
+│ Stuy Town/Peter Cooper Village    │           76066 │
+│ Queensbridge/Ravenswood           │           54858 │
+│ Columbia Street                   │           17436 │
+│ Maspeth                           │           86140 │
+│ Kew Gardens Hills                 │           55930 │
+│ Hollis                            │           41158 │
+│ Fordham South                     │           87980 │
+│ Manhattan Beach                   │           37726 │
+│ East Flushing                     │           35661 │
+│ Red Hook                          │           63852 │
+│ Grymes Hill/Clifton               │           34146 │
+│ Marine Park/Floyd Bennett Field   │            3598 │
+│ Westerleigh                       │           24253 │
+│      ·                            │             ·   │
+│      ·                            │             ·   │
+│      ·                            │             ·   │
+│ Arrochar/Fort Wadsworth           │           18320 │
+│ Eltingville/Annadale/Prince's Bay │           13082 │
+│ Rossville/Woodrow                 │            7700 │
+│ Oakwood                           │           10947 │
+│ South Beach/Dongan Hills          │           26882 │
+│ Broad Channel                     │            1592 │
+│ Manhattanville                    │           92765 │
+│ Port Richmond                     │           22583 │
+│ Murray Hill-Queens                │           63984 │
+│ Charleston/Tottenville            │           13165 │
+│ Brighton Beach                    │           73664 │
+│ Rego Park                         │           86459 │
+│ Allerton/Pelham Gardens           │           79245 │
+│ Briarwood/Jamaica Hills           │           75431 │
+│ Stapleton                         │           62138 │
+│ Bay Terrace/Fort Totten           │           22944 │
+│ Mariners Harbor                   │           45160 │
+│ Van Cortlandt Park                │           21894 │
+│ Freshkills Park                   │             786 │
+│ City Island                       │            7753 │
+├───────────────────────────────────┴─────────────────┤
+│ 120 rows (40 shown)                       2 columns │
+└─────────────────────────────────────────────────────┘
